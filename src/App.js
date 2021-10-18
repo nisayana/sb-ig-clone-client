@@ -1,5 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Switch, Route} from 'react-router'
+import Home from './components/Home'
+import UploadPosts from './components/UploadPosts'
+import Posts from './containers/Posts'
 
 function App() {
   return (
@@ -10,3 +12,4 @@ function App() {
 }
 
 export default App;
+ 
