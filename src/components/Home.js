@@ -1,6 +1,6 @@
 import React from 'react'
 
-fucntion Home() {
+function Home() {
     return(
         <div>
             Home of IG clone
