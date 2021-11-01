@@ -12,7 +12,7 @@ export default function UploadPosts() {
         setFormData((prevState) => {
             return {
                 ...prevState,
-                [e.target.name]: e.target.files[0]
+                [e.target.name]: e.target.value
             }
         })
     }
@@ -23,25 +23,21 @@ export default function UploadPosts() {
                 ...prevState,
                 [e.target.name]: e.target.files[0]
             }
-        })
+        }) 
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const {file, caption} = formData
-        let params = {
-            post: {
-                file,
-                caption
-            }
-        }
+
+        let formDataObj = new FormData()
+
+        formDataObj.append("file", file)
+        formDataObj.append("caption", caption)
+
         fetch("http://localhost:3001/posts", {
             "method": "POST",
-            "headers": {
-               "Content-type": "Application/json",
-               "Accept": "Application/json"
-            },
-            "body": JSON.stringify(params)
+            "body": formDataObj 
         })
         .then(resp => resp.json())
         .then(json => {
